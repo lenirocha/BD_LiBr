@@ -61,6 +61,7 @@ CREATE TABLE tb_Livro (
     titulo_livro VARCHAR(50) NOT NULL,
     autor INT NOT NULL,
     categoria INT NOT NULL,
+    editora VARCHAR(30),
     edicao INT NULL,
     ano_edicao CHAR(4) NULL,
     paginas INT NULL,
@@ -76,7 +77,7 @@ CREATE TABLE tb_Livro (
 CREATE TABLE tb_Exemplar (
     id_exemplar INT AUTO_INCREMENT,
     isbn VARCHAR(13) NOT NULL,
-    status ENUM('Disponível', 'Emprestado'),
+    status_exemplar ENUM('Disponível', 'Emprestado'),
     CONSTRAINT PK_id_exemplar PRIMARY KEY (id_exemplar),
     CONSTRAINT FK_isbn FOREIGN KEY (isbn)
         REFERENCES tb_Livro (isbn)
