@@ -9,7 +9,7 @@ CREATE TABLE tb_Usuario (
     cpf CHAR(11) UNIQUE NOT NULL,
     nome_usuario VARCHAR(50) NOT NULL,
     turma VARCHAR(4) NOT NULL,
-    tipo ENUM('Professor', 'Aluno'),
+    tipo ENUM('Professor', 'Aluno') NOT NULL,
     CONSTRAINT PK_id_usuario PRIMARY KEY (id_usuario)
 );
 
@@ -61,7 +61,6 @@ CREATE TABLE tb_Livro (
     titulo_livro VARCHAR(50) NOT NULL,
     autor INT NOT NULL,
     categoria INT NOT NULL,
-    editora VARCHAR(30),
     edicao INT NULL,
     ano_edicao CHAR(4) NULL,
     paginas INT NULL,
@@ -99,3 +98,4 @@ CREATE TABLE tb_Emprestimo (
 	CONSTRAINT FK_bibliotecaria FOREIGN KEY (bibliotecaria)
 		REFERENCES tb_Bibliotecaria (chave_acesso)
 );
+
