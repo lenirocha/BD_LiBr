@@ -64,7 +64,7 @@ CREATE TABLE tb_Livro (
     edicao INT NULL,
     ano_edicao CHAR(4) NULL,
     paginas INT NULL,
-    capa BLOB NULL,
+    capa VARCHAR(200) NULL,
     CONSTRAINT PK_isbn PRIMARY KEY (isbn),
     CONSTRAINT FK_autor FOREIGN KEY (autor)
         REFERENCES tb_Autor (id_autor),
