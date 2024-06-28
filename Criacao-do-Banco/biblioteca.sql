@@ -1,9 +1,9 @@
---cria o banco
+/*cria o banco*/
 CREATE DATABASE BIBLIOTECA;
 
 USE BIBLIOTECA;
 
---cria a tabela que contém cadastro de alunos e professores
+/*cria a tabela que contém cadastro de alunos e professores*/
 CREATE TABLE tb_Usuario (
     id_usuario INT AUTO_INCREMENT,
     cpf CHAR(11) UNIQUE NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE tb_Usuario (
     CONSTRAINT PK_id_usuario PRIMARY KEY (id_usuario)
 );
 
---especialização de tb_Usuario: contém apenas os professores
+/*especialização de tb_Usuario: contém apenas os professores*/
 CREATE TABLE tb_Professor (
     professor INT NOT NULL,
     turma_professor VARCHAR(4) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE tb_Professor (
         REFERENCES tb_Usuario (id_usuario)
 );
 
---especialização de tb_Usuario: contém apenas os alunos
+/*especialização de tb_Usuario: contém apenas os alunos*/
 CREATE TABLE tb_Aluno (
     aluno INT NOT NULL,
     turma_aluno VARCHAR(4) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE tb_Aluno (
         REFERENCES tb_Usuario (id_usuario)
 );
 
---tabela que contém os usuários que farão login no sistema
+/*tabela que contém os usuários que farão login no sistema*/
 CREATE TABLE tb_Bibliotecaria (
     chave_acesso INT AUTO_INCREMENT,
     nome_bibliotecaria VARCHAR(50) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE tb_Bibliotecaria (
     CONSTRAINT PK_chave_acesso PRIMARY KEY (chave_acesso)
 );
 
---tabela de autores
+/*tabela de autores*/
 CREATE TABLE tb_Autor (
     id_autor INT AUTO_INCREMENT,
     nome_autor VARCHAR(50) NOT NULL,
@@ -48,14 +48,14 @@ CREATE TABLE tb_Autor (
     CONSTRAINT PK_id_autor PRIMARY KEY (id_autor)
 );
 
---tabela de categoria dos livros
+/*tabela de categoria dos livros*/
 CREATE TABLE tb_Categoria (
 	id_categoria INT AUTO_INCREMENT,
 	categoria VARCHAR(30) NOT NULL UNIQUE,
     CONSTRAINT PK_id_categoria PRIMARY KEY (id_categoria)
 );
 
---tabela de títulos
+/*tabela de títulos*/
 CREATE TABLE tb_Livro (
     isbn VARCHAR(13) NOT NULL,
     titulo_livro VARCHAR(50) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE tb_Livro (
         REFERENCES tb_Categoria (id_categoria)
 );
 
---exemplar de cada livro. tb_Livro 1 - N tb_Exemplar
+/*exemplar de cada livro. tb_Livro 1 - N tb_Exemplar*/
 CREATE TABLE tb_Exemplar (
     id_exemplar INT AUTO_INCREMENT,
     isbn VARCHAR(13) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE tb_Exemplar (
         REFERENCES tb_Livro (isbn)
 );
 
---recebe as informações do empréstimo, incluindo data de devolução (default null)
+/*recebe as informações do empréstimo, incluindo data de devolução (default null)*/
 CREATE TABLE tb_Emprestimo (
 	id_emprestimo INT AUTO_INCREMENT,
     usuario INT NOT NULL,
